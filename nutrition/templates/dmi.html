@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}DMI计算{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/dmi.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">干物质采食量DMI计算公式</h3>
+	</div>
+	<div class="panel-body">
+		泌乳牛: <a href="http://www.codecogs.com/eqnedit.php?latex=DMI(kg/d)&space;=&space;(0.372&space;\times&space;FCM&space;&plus;&space;0.0968&space;\times&space;BW^{0.75})&space;\times&space;(1&space;-&space;e^{(-0.192&space;\times&space;(WOL&space;&plus;&space;3.67))})" target="_blank"><img src="http://latex.codecogs.com/png.latex?DMI(kg/d)&space;=&space;(0.372&space;\times&space;FCM&space;&plus;&space;0.0968&space;\times&space;BW^{0.75})&space;\times&space;(1&space;-&space;e^{(-0.192&space;\times&space;(WOL&space;&plus;&space;3.67))})" class="img-responsive" title="DMI(kg/d) = (0.372 \times FCM + 0.0968 \times BW^{0.75}) \times (1 - e^{(-0.192 \times (WOL + 3.67))})" /></a>
+	</div>
+    <div class="panel-body">
+		非泌乳青年母牛: <a href="http://www.codecogs.com/eqnedit.php?latex=DMI(kg/d)&space;=&space;(BW^{0.75}\times(0.2435\times&space;NE_{M}-0.0466&space;\times&space;NE_{M}^{2}-0.1128)/NE_{M})" target="_blank"><img src="http://latex.codecogs.com/png.latex?DMI(kg/d)&space;=&space;(BW^{0.75}\times(0.2435\times&space;NE_{M}-0.0466&space;\times&space;NE_{M}^{2}-0.1128)/NE_{M})" class="img-responsive" title="DMI(kg/d) = (BW^{0.75}\times(0.2435\times NE_{M}-0.0466 \times NE_{M}^{2}-0.1128)/NE_{M})" /></a>
+	</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">泌乳牛DMI计算(e=2.71828)</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">FCM: </span>
+        <input type="number" class="form-control fcm" placeholder="请输入FCM">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">体重(kg): </span>
+        <input type="number" class="form-control weight" placeholder="请输入体重">
+    </div>
+	<br>
+		<div class="input-group">
+        <span class="input-group-addon">泌乳周龄: </span>
+        <input type="number" class="form-control week" placeholder="请输入泌乳周龄">
+    </div>
+		<br>
+    <div class="input-group">
+        <span class="input-group-addon">DMI结果: </span>
+        <input type="text" class="form-control result" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg calDMI" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">非泌乳青年母牛DMI计算(e=2.71828)(若要计算非泌乳青年母牛DMI，先计算能量)</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">体重(kg): </span>
+        <input type="number" class="form-control weight" placeholder="请输入体重">
+    </div>
+	<br>
+		<div class="input-group">
+        <span class="input-group-addon">NEm: </span>
+        <input type="number" class="form-control week" placeholder="请输入NEm">
+    </div>
+		<br>
+    <div class="input-group">
+        <span class="input-group-addon">DMI结果: </span>
+        <input type="text" class="form-control result" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg calDMI" value="计算">
+</form>
+</div>
+<script>
+$(document).ready(function () {
+	$(".calDMI").click(function () {
+		$(".result").val(function () {
+			return $(".fcm").val() * 0.372 + 0.0968 * ($(".weight").val() ^ 0.75)	 * (1 - 2.71828^(-0.192 * ($(".week").val() + 3.67)))
+        })
+    })
+})
+</script>
+{% endblock %}

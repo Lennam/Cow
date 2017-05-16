@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}TDN计算{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/tdnpre.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">tdNFC、tdCPf、tdCPc、tdFA、tdNDF计算公式</h3>
+	</div>
+	<div class="panel-body">
+		真可消化非纤维碳水化合物(tdNFC)=0.98 x (100 - ((NDF - NDICP) + CP + EE + Ash)) x PAF<br>
+        粗料真可消化粗蛋白(tdCPf) = CP x exp(- 1.2 x (ADICP / CP))<br>
+        精料真可消化粗蛋白(tdCPc) = (1 - (0.4 x (ADICP / CP))) x CP<br>
+        真可消化脂肪酸(tdFA) = FA (注：如果EE < 1, 则FA = 0)<br>
+        真可消化中性洗涤纤维(tdNDF) = 0.75 x (NDFn - L) x (1 - (L / NDFn)^0.667)<br>
+        上述方程式中，NDICP=中性洗涤不溶性氮 x 6.25;PAF=加工校正因子；ADICP=酸性洗涤不溶性氮 x 6.25；FA=脂肪酸（即EE - 1）；L = 酸性洗涤木质素；NDFn = NDF -NDICP
+	</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">真可消化非纤维碳水化合物(tdNFC)计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">NDF: </span>
+        <input type="number" class="form-control ndf" placeholder="请输入NDF">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">NDICP: </span>
+        <input type="number" class="form-control ndicp" placeholder="请输入NDICP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">CP: </span>
+        <input type="number" class="form-control tdNFC_cp" placeholder="请输入CP">
+    </div>
+		<br>
+   <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control ee" placeholder="请输入EE">
+    </div>
+     <br>
+        <div class="input-group">
+        <span class="input-group-addon">Ash: </span>
+        <input type="number" class="form-control ash" placeholder="请输入Ash">
+    </div>
+     <br>
+     <div class="input-group">
+        <span class="input-group-addon">PAF: </span>
+        <input type="number" class="form-control paf" placeholder="请输入PAF">
+    </div><br>
+    <div class="input-group">
+        <span class="input-group-addon">tdNFC结果: </span>
+        <input type="text" class="form-control result_tdNFC" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_tdNFC" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">粗料真可消化粗蛋白(tdCPf)计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">CP: </span>
+        <input type="number" class="form-control tdCPf_cp" placeholder="请输入CP">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">ADICP: </span>
+        <input type="number" class="form-control tdCPf_adicp" placeholder="请输入ADICP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">tdCPf结果: </span>
+        <input type="text" class="form-control result_tdCPf" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_tdCPf" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">精料真可消化粗蛋白(tdCPc)计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">ADICP: </span>
+        <input type="number" class="form-control tdCPc_adicp" placeholder="请输入ADICP">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">CP: </span>
+        <input type="number" class="form-control tdCPc_cp" placeholder="请输入CP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">tdCPf结果: </span>
+        <input type="text" class="form-control result_tdCPc" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_tdCPc" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">真可消化中性洗涤纤维(tdNDF)计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">NDFn: </span>
+        <input type="number" class="form-control tdNDF_ndfn" placeholder="请输入NDFn">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">L: </span>
+        <input type="number" class="form-control tdNDF_L" placeholder="请输入L">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">tdNDF结果: </span>
+        <input type="text" class="form-control result_tdNDF" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_tdNDF" value="计算">
+</form>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".cal_tdNFC").click(function () {
+            $(".result_tdNFC").val(function () {
+                return 0.98 * (100 - (($(".ndf").val() - $(".ndicp").val()) + $(".tdNFC_cp").val() + $(".ee").val() + $(".ash").val())) * $(".paf").val()
+            })
+        })
+        $(".cal_tdCPf").click(function () {
+            $(".result_tdCPf").val(function () {
+                return $(".tdCPf_cp").val() * 2.71828 ^ (-1.2 * ($(".tdCPf_adicp").val() / $(".tdCPf_cp").val()))
+            })
+        })
+        $(".cal_tdCPc").click(function () {
+            $(".result_tdCPc").val(function () {
+                return (1 - (0.4 * ($(".tdCPc_adicp").val() / $(".tdCPc_cp").val()))) * $(".tdCPc_cp").val()
+            })
+        })
+        $(".cal_tdNDF").click(function () {
+            $(".result_tdNDF").val(function () {
+                return 0.75 * ($(".tdNDF_ndfn").val() - $(".tdNDF_L").val()) * (1 - ($(".tdNDF_L").val() / $(".tdNDF_ndfn").val())^0.667)
+            })
+        })
+    })
+</script>
+{% endblock %}

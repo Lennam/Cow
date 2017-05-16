@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}历史查看{% endblock %}
+
+{% block links %}<link rel="stylesheet" href="{% static  'css/info.css'  %}">{% endblock %}
+
+{% block content %}
+<div id="nutrition" style="width: 100%;height:400px;" class=".hidden-xs"></div>
+<div class="panel panel-default">
+    <div class="panel-heading">历史记录</div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>日期</th>
+            <th>tdnfc</th>
+            <th>tdcpf</th>
+            <th>tdcpc</th>
+            <th>tdfa</th>
+            <th>tdndf</th>
+            <th>tdn</th>
+            <th>de1x</th>
+            <th>mep</th>
+            <th>nelp</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for result in results %}
+
+        <tr>
+            <td>{{result.id}}</td>
+            <td>{{result.date}}</td>
+            <td>{{result.tdnfc}}</td>
+            <td>{{result.tdcpf}}</td>
+            <td>{{result.tdcpc}}</td>
+            <td>{{result.tdfa}}</td>
+            <td>{{result.tdndf}}</td>
+            <td>{{result.tdn}}</td>
+            <td>{{result.de1x}}</td>
+            <td>{{result.mep}}</td>
+            <td>{{result.nelp}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+</div><br>
+<div class="panel panel-default">
+    <div class="panel-heading">饲料历史记录</div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>日期</th>
+            <th>饲料一</th>
+            <th>饲料一含量</th>
+            <th>饲料二</th>
+            <th>饲料二含量</th>
+            <th>饲料三</th>
+            <th>饲料三含量</th>
+            <th>饲料四</th>
+            <th>饲料四含量</th>
+            <th>饲料五</th>
+            <th>饲料五含量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr>-->
+            <!--<td>{{a.date}}</td>-->
+            <!--<td>{{a.nameOne}}</td>-->
+            <!--<td>{{a.volOne}}</td>-->
+            <!--<td>{{a.nameTwo}}</td>-->
+            <!--<td>{{a.volTwo}}</td>-->
+            <!--<td>{{a.nameThree}}</td>-->
+            <!--<td>{{a.volThree}}</td>-->
+            <!--<td>{{a.nameFour}}</td>-->
+            <!--<td>{{a.volFour}}</td>-->
+            <!--<td>{{a.nameFive}}</td>-->
+            <!--<td>{{a.volFive}}</td>-->
+        <!--</tr>-->
+      {% for c in content1 %}
+        <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.date1}}</td>
+            <td>{{c.nameOne}}</td>
+            <td>{{c.volOne}}</td>
+            <td>{{c.nameTwo}}</td>
+            <td>{{c.volTwo}}</td>
+            <td>{{c.nameThree}}</td>
+            <td>{{c.volThree}}</td>
+            <td>{{c.nameFour}}</td>
+            <td>{{c.volFour}}</td>
+            <td>{{c.nameFive}}</td>
+            <td>{{c.volFive}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+</div>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var nutrition = echarts.init(document.getElementById('nutrition'));
+        var Tdnfc = {{ Tdnfc}}
+        var Tdcpf = {{ Tdcpf}}
+        var Tdcpc = {{ Tdcpc}}
+        var Tdfa= {{ Tdfa}}
+        var Tdndf = {{ Tdndf}}
+        var Nelp = {{ Nelp }}
+        var Dat = {{ Dat | safe }}
+        var Tdn = {{ Tdn }}
+        var De1x = {{ De1x }}
+        var Mep = {{ Mep }}
+        // 指定图表的配置项和数据
+        var optionN = {
+            title: {
+                text: '各养分变化'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['tdnfc','tdcpf','tdcpc','tdfa','tdndf','泌乳净能NElp','消化能DE1x','代谢能MEp']
+
+            },
+            xAxis: {
+                data: Dat
+            },
+            yAxis: {},
+            series: [{
+                name: 'tdnfc',
+                type: 'line',
+                data: Tdnfc
+            },
+                {
+                name: 'tdcpf',
+                type: 'line',
+                data: Tdcpf
+            },
+                {
+                name: 'tdcpc',
+                type: 'line',
+                data: Tdcpc
+            },
+                {
+                name: 'tdfa',
+                type: 'line',
+                data: Tdfa
+            },
+                {
+                name: 'tdndf',
+                type: 'line',
+                data: Tdndf
+            },
+                {
+                name: '泌乳净能NElp',
+                type: 'line',
+                data: Nelp
+            },
+                {
+                name: '消化能DE1x',
+                type: 'line',
+                data: De1x
+            },
+                {
+                name: '代谢能MEp',
+                type: 'line',
+                data: Mep
+            }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        nutrition.setOption(optionN);
+    </script>
+{% endblock %}

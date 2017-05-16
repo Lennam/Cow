@@ -1,0 +1,763 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}数据管理{% endblock %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static  'css/manage.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">奶牛常用饲料原料的营养成分</div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>饲料名称</th>
+            <th>NDF(%)</th>
+            <th>干物质(%)</th>
+            <th>CP(%)</th>
+            <th>中性洗涤剂不溶CP(%)</th>
+            <th>酸性洗涤剂不溶CP(%)</th>
+            <th>醚浸出物(%)</th>
+            <th>中性洗涤纤维(%)</th>
+            <th>酸性洗涤纤维(%)</th>
+            <th>灰分Ash(%)</th>
+            <th>木质素L(%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="1">
+            <th scope="row">1</th>
+            <td>紫花苜蓿</td>
+            <td>56.4</td>
+            <td>90.3</td>
+            <td>19.2</td>
+            <td>3.1</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>41.6</td>
+            <td>32.8</td>
+            <td>11.0</td>
+            <td>7.6</td>
+        </tr>
+      <tr id="2">
+            <th scope="row">2</th>
+            <td>大麦</td>
+            <td>82.7</td>
+            <td>91.0</td>
+            <td>12.4</td>
+            <td>1.8</td>
+            <td>0.5</td>
+            <td>2.2</td>
+            <td>20.8</td>
+            <td>7.2</td>
+            <td>2.9</td>
+            <td>1.9</td>
+        </tr>
+      <tr id="3">
+            <th scope="row">3</th>
+            <td>油菜子粕</td>
+            <td>69.9</td>
+            <td>90.3</td>
+            <td>37.8</td>
+            <td>6.3</td>
+            <td>2.4</td>
+            <td>5.4</td>
+            <td>29.8</td>
+            <td>20.5</td>
+            <td>7.4</td>
+            <td>9.5</td>
+        </tr>
+      <tr id="4">
+            <th scope="row">4</th>
+            <td>黄玉米蛋白粉</td>
+            <td>84.4</td>
+            <td>86.4</td>
+            <td>65.0</td>
+            <td>3.6</td>
+            <td>3.0</td>
+            <td>2.5</td>
+            <td>11.1</td>
+            <td>8.2</td>
+            <td>3.3</td>
+            <td>1.5</td>
+        </tr>
+      <tr id="5">
+            <th scope="row">5</th>
+            <td>黄玉米(蒸汽压片)</td>
+            <td>91.7</td>
+            <td>88.1</td>
+            <td>9.4</td>
+            <td>0.7</td>
+            <td>0.3</td>
+            <td>4.2</td>
+            <td>9.5</td>
+            <td>3.4</td>
+            <td>1.5</td>
+            <td>0.9</td>
+        </tr>
+      <tr id="6">
+            <th scope="row">6</th>
+            <td>植物油</td>
+            <td>184.0</td>
+            <td>100.0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>99.9</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+      <tr id="7">
+            <th scope="row">7</th>
+            <td>豆科干草</td>
+            <td>58.9</td>
+            <td>83.9</td>
+            <td>20.8</td>
+            <td>2.5</td>
+            <td>1.6</td>
+            <td>2.0</td>
+            <td>42.9</td>
+            <td>33.4</td>
+            <td>10.0</td>
+            <td>7.0</td>
+        </tr>
+      <tr id="8">
+            <th scope="row">8</th>
+            <td>亚麻子粕</td>
+            <td>65.4</td>
+            <td>90.3</td>
+            <td>32.6</td>
+            <td>7.9</td>
+            <td>1.1</td>
+            <td>1.7</td>
+            <td>36.1</td>
+            <td>22.1</td>
+            <td>6.5</td>
+            <td>8.3</td>
+        </tr>
+      <tr id="9">
+            <th scope="row">9</th>
+            <td>甘蔗糖蜜</td>
+            <td>81.0</td>
+            <td>74.3</td>
+            <td>5.8</td>
+            <td>0.0</td>
+            <td>0.0</td>
+            <td>0.2</td>
+            <td>0.4</td>
+            <td>0.2</td>
+            <td>13.3</td>
+            <td>0</td>
+        </tr>
+      <tr id="10">
+            <th scope="row">10</th>
+            <td>燕麦</td>
+            <td>78.5</td>
+            <td>90.0</td>
+            <td>13.2</td>
+            <td>1.8</td>
+            <td>0.3</td>
+            <td>5.1</td>
+            <td>30.0</td>
+            <td>14.6</td>
+            <td>3.3</td>
+            <td>4.9</td>
+        </tr>
+      <tr id="11">
+            <th scope="row">11</th>
+            <td>马铃薯下脚料</td>
+            <td>80.7</td>
+            <td>35.4</td>
+            <td>10.5</td>
+            <td>5.2</td>
+            <td>2.3</td>
+            <td>10.8</td>
+            <td>22.1</td>
+            <td>16.5</td>
+            <td>12.8</td>
+            <td>2.3</td>
+        </tr>
+      <tr id="12">
+            <th scope="row">12</th>
+            <td>高粱(蒸汽压片)</td>
+            <td>89.4</td>
+            <td>88.6</td>
+            <td>11.6</td>
+            <td>2.8</td>
+            <td>1.0</td>
+            <td>3.1</td>
+            <td>10.9</td>
+            <td>5.9</td>
+            <td>2.0</td>
+            <td>1.1</td>
+        </tr>
+      <tr id="13">
+            <th scope="row">13</th>
+            <td>高粱干草</td>
+            <td>54.4</td>
+            <td>86.5</td>
+            <td>9.4</td>
+            <td>2.8</td>
+            <td>1.2</td>
+            <td>2.3</td>
+            <td>64.8</td>
+            <td>40.0</td>
+            <td>8.7</td>
+            <td>6.0</td>
+        </tr>
+      <tr id="14">
+            <th scope="row">14</th>
+            <td>大豆皮</td>
+            <td>67.3</td>
+            <td>90.9</td>
+            <td>13.9</td>
+            <td>3.5</td>
+            <td>1.0</td>
+            <td>2.7</td>
+            <td>60.3</td>
+            <td>44.6</td>
+            <td>4.9</td>
+            <td>2.5</td>
+        </tr>
+      <tr id="15">
+            <th scope="row">15</th>
+            <td>葵花子</td>
+            <td>122.3</td>
+            <td>91.8</td>
+            <td>19.2</td>
+            <td>2.9</td>
+            <td>1.9</td>
+            <td>41.9</td>
+            <td>24.0</td>
+            <td>16.7</td>
+            <td>5.1</td>
+            <td>6.0</td>
+        </tr>
+      <tr id="16">
+            <th scope="row">16</th>
+            <td>大豆</td>
+            <td>98.8</td>
+            <td>91.0</td>
+            <td>43.0</td>
+            <td>6.1</td>
+            <td>2.0</td>
+            <td>19.0</td>
+            <td>22.1</td>
+            <td>14.7</td>
+            <td>5.0</td>
+            <td>3.1</td>
+        </tr>
+      <tr id="17">
+            <th scope="row">17</th>
+            <td>小麦麸</td>
+            <td>71.5</td>
+            <td>89.1</td>
+            <td>17.3</td>
+            <td>2.8</td>
+            <td>1.4</td>
+            <td>4.3</td>
+            <td>42.5</td>
+            <td>15.5</td>
+            <td>6.3</td>
+            <td>3.0</td>
+        </tr>
+      <tr id="18">
+            <th scope="row">18</th>
+            <td>小麦(压片)</td>
+            <td>86.6</td>
+            <td>89.4</td>
+            <td>14.2</td>
+            <td>1.7</td>
+            <td>0.2</td>
+            <td>2.3</td>
+            <td>13.4</td>
+            <td>4.4</td>
+            <td>2.0</td>
+            <td>1.7</td>
+        </tr>
+      <tr id="19">
+            <th scope="row">19</th>
+            <td>啤酒糟</td>
+            <td>71.3</td>
+            <td>90.7</td>
+            <td>29.2</td>
+            <td>9.1</td>
+            <td>3.5</td>
+            <td>5.2</td>
+            <td>47.4</td>
+            <td>22.2</td>
+            <td>4.3</td>
+            <td>5.0</td>
+        </tr>
+      <tr id="20">
+            <th scope="row">20</th>
+            <td>小麦秸</td>
+            <td>47.5</td>
+            <td>92.7</td>
+            <td>4.8</td>
+            <td>2.1</td>
+            <td>1.4</td>
+            <td>1.6</td>
+            <td>73.0</td>
+            <td>49.4</td>
+            <td>7.6</td>
+            <td>8.8</td>
+        </tr>
+      </tbody>
+  </table>
+    </div>
+</div>
+<p><input type="file" id="excel-file" class="btn btn-default"> 点击按钮选择excel文件</p>
+<form role="from" method="post">
+    <div class="form-group">
+        <select class="form-control" id="select1" name="select_1">
+            <option value="null">请选择饲料</option>
+            <option value="1">紫花苜蓿</option>
+            <option value="2">大麦</option>
+            <option value="3">油菜子粕</option>
+            <option value="4">黄玉米蛋白粉</option>
+            <option value="5">黄玉米(蒸汽压片)</option>
+            <option value="6">植物油</option>
+            <option value="7">豆科干草</option>
+            <option value="8">亚麻子粕</option>
+            <option value="9">甘蔗糖蜜</option>
+            <option value="10">燕麦</option>
+            <option value="11">马铃薯下脚料</option>
+            <option value="12">高粱(蒸汽压片)</option>
+            <option value="13">高粱干草</option>
+            <option value="14">大豆皮</option>
+            <option value="15">葵花子</option>
+            <option value="16">大豆</option>
+            <option value="17">小麦麸</option>
+            <option value="18">小麦(压片)</option>
+            <option value="19">啤酒糟</option>
+            <option value="20">小麦秸</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" step="0.001" class="form-control" aria-label="..." placeholder="请输入饲料含量(%)" id="fodder1" name="fodder_1">
+    </div>
+</form>
+<form role="from" method="post">
+    <div class="form-group">
+        <select class="form-control" id="select2" name="select_2">
+            <option value="null">请选择饲料</option>
+            <option value="1">紫花苜蓿</option>
+            <option value="2">大麦</option>
+            <option value="3">油菜子粕</option>
+            <option value="4">黄玉米蛋白粉</option>
+            <option value="5">黄玉米(蒸汽压片)</option>
+            <option value="6">植物油</option>
+            <option value="7">豆科干草</option>
+            <option value="8">亚麻子粕</option>
+            <option value="9">甘蔗糖蜜</option>
+            <option value="10">燕麦</option>
+            <option value="11">马铃薯下脚料</option>
+            <option value="12">高粱(蒸汽压片)</option>
+            <option value="13">高粱干草</option>
+            <option value="14">大豆皮</option>
+            <option value="15">葵花子</option>
+            <option value="16">大豆</option>
+            <option value="17">小麦麸</option>
+            <option value="18">小麦(压片)</option>
+            <option value="19">啤酒糟</option>
+            <option value="20">小麦秸</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" step="0.001" class="form-control" aria-label="..." placeholder="请输入饲料含量(%)" id="fodder2" name="fodder_2">
+    </div>
+</form>
+<form role="from" method="post">
+    <div class="form-group">
+        <select class="form-control" id="select3" name="select_3">
+            <option value="null">请选择饲料</option>
+            <option value="1">紫花苜蓿</option>
+            <option value="2">大麦</option>
+            <option value="3">油菜子粕</option>
+            <option value="4">黄玉米蛋白粉</option>
+            <option value="5">黄玉米(蒸汽压片)</option>
+            <option value="6">植物油</option>
+            <option value="7">豆科干草</option>
+            <option value="8">亚麻子粕</option>
+            <option value="9">甘蔗糖蜜</option>
+            <option value="10">燕麦</option>
+            <option value="11">马铃薯下脚料</option>
+            <option value="12">高粱(蒸汽压片)</option>
+            <option value="13">高粱干草</option>
+            <option value="14">大豆皮</option>
+            <option value="15">葵花子</option>
+            <option value="16">大豆</option>
+            <option value="17">小麦麸</option>
+            <option value="18">小麦(压片)</option>
+            <option value="19">啤酒糟</option>
+            <option value="20">小麦秸</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" step="0.001" class="form-control" aria-label="..." placeholder="请输入饲料含量(%)" id="fodder3" name="fodder_3">
+    </div>
+</form>
+<form role="from" method="post">
+    <div class="form-group">
+        <select class="form-control" id="select4" name="select_4">
+            <option value="null">请选择饲料</option>
+            <option value="1">紫花苜蓿</option>
+            <option value="2">大麦</option>
+            <option value="3">油菜子粕</option>
+            <option value="4">黄玉米蛋白粉</option>
+            <option value="5">黄玉米(蒸汽压片)</option>
+            <option value="6">植物油</option>
+            <option value="7">豆科干草</option>
+            <option value="8">亚麻子粕</option>
+            <option value="9">甘蔗糖蜜</option>
+            <option value="10">燕麦</option>
+            <option value="11">马铃薯下脚料</option>
+            <option value="12">高粱(蒸汽压片)</option>
+            <option value="13">高粱干草</option>
+            <option value="14">大豆皮</option>
+            <option value="15">葵花子</option>
+            <option value="16">大豆</option>
+            <option value="17">小麦麸</option>
+            <option value="18">小麦(压片)</option>
+            <option value="19">啤酒糟</option>
+            <option value="20">小麦秸</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number"  step="0.001" class="form-control" aria-label="..." placeholder="请输入饲料含量(%)" id="fodder4" name="fodder_4">
+    </div>
+</form>
+<form role="from" method="post">
+    <div class="form-group">
+        <select class="form-control" id="select5" name="select_5">
+            <option value="null">请选择饲料</option>
+            <option value="1">紫花苜蓿</option>
+            <option value="2">大麦</option>
+            <option value="3">油菜子粕</option>
+            <option value="4">黄玉米蛋白粉</option>
+            <option value="5">黄玉米(蒸汽压片)</option>
+            <option value="6">植物油</option>
+            <option value="7">豆科干草</option>
+            <option value="8">亚麻子粕</option>
+            <option value="9">甘蔗糖蜜</option>
+            <option value="10">燕麦</option>
+            <option value="11">马铃薯下脚料</option>
+            <option value="12">高粱(蒸汽压片)</option>
+            <option value="13">高粱干草</option>
+            <option value="14">大豆皮</option>
+            <option value="15">葵花子</option>
+            <option value="16">大豆</option>
+            <option value="17">小麦麸</option>
+            <option value="18">小麦(压片)</option>
+            <option value="19">啤酒糟</option>
+            <option value="20">小麦秸</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" step="0.001" class="form-control" aria-label="..." placeholder="请输入饲料含量(%)" id="fodder5" name="fodder_5">
+    </div>
+</form>
+<div class="panel panel-primary">
+
+	<div class="panel-heading">
+		<h3 class="panel-title">计算结果</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;" id="result" method="post">
+        <div style="display: none">
+            <input type="text" class="nameOne" name="nameOne" readonly>
+            <input type="text" class="nameTwo" name="nameTwo" readonly>
+            <input type="text" class="nameThree" name="nameThree" readonly>
+            <input type="text" class="nameFour" name="nameFour" readonly>
+            <input type="text" class="nameFive" name="nameFive" readonly>
+            <input type="number" class="volone" name="volone" readonly>
+            <input type="number" class="voltwo" name="voltwo" readonly>
+            <input type="number" class="volthree" name="volthree" readonly>
+            <input type="number" class="volfour" name="volfour" readonly>
+            <input type="number" class="volfive" name="volfive" readonly>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">真可消化非纤维碳水化合物(tdNFC): </span>
+            <input type="text" class="form-control tdnfc" placeholder="结果" name="tdnfc" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">粗料真可消化粗蛋白(tdCPf): </span>
+            <input type="text" class="form-control tdcpf" placeholder="结果" name="tdcpf" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">精料真可消化粗蛋白(tdCPc): </span>
+            <input type="text" class="form-control tdcpc" placeholder="结果" name="tdcpc" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">真可消化脂肪酸(tdFA): </span>
+            <input type="text" class="form-control tdfa" placeholder="结果" name="tdfa" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">真可消化中性洗涤纤维(tdNDF): </span>
+            <input type="text" class="form-control tdndf" placeholder="结果" name="tdndf" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">总可消化养分(TDN): </span>
+            <input type="text" class="form-control tdn" placeholder="结果" name="tdn" readonly>
+            <input type="text" id="time" placeholder="结果" name="date" readonly style="display: none">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">消化能DE1x: </span>
+            <input type="text" class="form-control de1x" placeholder="结果" name="de1x" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">代谢能MEp: </span>
+            <input type="text" class="form-control mep" placeholder="结果" name="mep" readonly>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">泌乳净能NELp: </span>
+            <input type="text" class="form-control nelp" placeholder="结果" name="nelp" readonly>
+        </div>
+        <br>
+        <input type="button" class="btn-lg cal" value="计算">
+        <input type="submit" class="btn-lg" value="提交数据">
+        <button class="btn-lg"><a href="fodder.html">清空数据</a></button>
+    </form>
+</div>
+<br>
+<script>
+    $(document).ready(function(){
+        function Appendzero(obj)
+        {
+        if(obj<10) return "0" +""+ obj;
+        else return obj;
+        }
+        var t = new Date();
+        var nowMonth = Appendzero(t.getMonth() + 1);
+        var nowDate = Appendzero(t.getDate())
+        $('#time').val(t.getFullYear() + "-" + nowMonth + "-" + nowDate)
+        $('#excel-file').change(function(e) {
+            var files = e.target.files;
+            var fileReader = new FileReader();
+            fileReader.onload = function(ev) {
+                try {
+                    var data = ev.target.result,
+                        workbook = XLSX.read(data, {
+                            type: 'binary'
+                        }),
+                        persons = [];
+                } catch (e) {
+                    console.log('文件类型不正确');
+                    return;
+                }
+                var fromTo = '';
+                for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        fromTo = workbook.Sheets[sheet]['!ref'];
+                        if (fromTo[0] === 'A' && fromTo[3] === 'E') {
+                            persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                            break;
+                        }
+                    }
+                }
+                 var cell = workbook.Sheets[sheet];
+                print_data(persons);
+              $('#fodder1').val(function(){
+                return  Number(cell.A2.v);
+              });
+                $('#fodder2').val(function(){
+                return  Number(cell.B2.v);
+              });
+                $('#fodder3').val(function(){
+                return  Number(cell.C2.v);
+              });
+                $('#fodder4').val(function(){
+                return  Number(cell.D2.v);
+              });
+                $('#fodder5').val(function(){
+                return  Number(cell.E2.v);
+              });
+                $('#select1 option[value='+cell.A1.v +']').attr('selected','true');
+                $('#select2 option[value='+cell.B1.v +']').attr('selected','true');
+                $('#select3 option[value='+cell.C1.v +']').attr('selected','true');
+                $('#select4 option[value='+cell.D1.v +']').attr('selected','true');
+                $('#select5 option[value='+cell.E1.v +']').attr('selected','true');
+            };
+            fileReader.readAsBinaryString(files[0]);
+        });
+        $('.cal').click(function () {
+            var fodder1 = Number($('#fodder1').val());
+            var fodder2 = Number($('#fodder2').val());
+            var fodder3 = Number($('#fodder3').val());
+            var fodder4 = Number($('#fodder4').val());
+            var fodder5 = Number($('#fodder5').val());
+            var option1 = Number($('#select1').val());
+            var option2 = Number($('#select2').val());
+            var option3 = Number($('#select3').val());
+            var option4 = Number($('#select4').val());
+            var option5 = Number($('#select5').val());
+            if($('#select1').val() === 'null')
+            {
+                fodder1 = Number(0);
+                option1 = 1;
+            }
+            if($('#select2').val() === 'null')
+            {
+                fodder2 = Number(0);
+                option2 = 1;
+            }
+            if($('#select3').val() === 'null')
+            {
+                fodder3 = Number(0);
+                option3 = 1;
+            }
+            if($('#select4').val() === 'null')
+            {
+                fodder4 = Number(0);
+                option4 = 1;
+            }
+            if($('#select5').val() === 'null')
+            {
+                fodder5 = Number(0);
+                option5 = 1;
+            }
+            var fodderAll = fodder1 + fodder2 + fodder3 + fodder4 + fodder5;
+            if (fodderAll !== 100) {
+                alert("请选择至少一种饲料，并且饲料总含量必须为100%");
+                window.location.reload();
+                return
+            }
+            $('.nameOne').val(function () {
+                if ($('#select1').val() === 'null') return '空'
+                else return $('#select1').find('option:selected').text()
+            })
+            $('.nameTwo').val(function () {
+                if ($('#select2').val() === 'null') return '空'
+                else return $('#select2').find('option:selected').text()
+            })
+            $('.nameThree').val(function () {
+                if ($('#select3').val() === 'null') return '空'
+                else return $('#select3').find('option:selected').text()
+            })
+            $('.nameFour').val(function () {
+                if ($('#select4').val() === 'null') return '空'
+                else return $('#select4').find('option:selected').text()
+            })
+            $('.nameFive').val(function () {
+                if ($('#select5').val() === 'null') return '空'
+                else return $('#select5').find('option:selected').text()
+            })
+            $('.volone').val(function () {
+                if ($('#fodder1').val() === '') return 0
+                else return $('#fodder1').val()
+            })
+            $('.voltwo').val(function () {
+                if ($('#fodder2').val() === '') return 0
+                else return $('#fodder2').val()
+            })
+            $('.volthree').val(function () {
+                if ($('#fodder3').val() === '') return 0
+                else return $('#fodder3').val()
+            })
+            $('.volfour').val(function () {
+                if ($('#fodder4').val() === '') return 0
+                else return $('#fodder4').val()
+            })
+            $('.volfive').val(function () {
+                if ($('#fodder5').val() === '') return 0
+                else return $('#fodder5').val()
+            })
+            var reslut1,reslut2,reslut3,reslut4,reslut5
+
+            function cal_tdnfc(){
+                 reslut1 =  ((0.98 * (100 - ((Number($('tr#'+ option1 + '>td:nth-child(3)').html()) - Number($('tr#'+ option1 + '>td:nth-child(6)').html())) + Number($('tr#'+ option1 + '>td:nth-child(5)').html()) + Number($('tr#'+ option1 + '>td:nth-child(8)').html()) + Number($('tr#'+ option1 + '>td:nth-child(11)').html())))) * (fodder1 * 0.01)) +
+                    + + ((0.98 * (100 - ((Number($('tr#'+ option2 + '>td:nth-child(3)').html()) - Number($('tr#'+ option2 + '>td:nth-child(6)').html())) + Number($('tr#'+ option2 + '>td:nth-child(5)').html()) + Number($('tr#'+ option2 + '>td:nth-child(8)').html()) + Number($('tr#'+ option2 + '>td:nth-child(11)').html())))) * (fodder2 * 0.01)) +
+                    + + ((0.98 * (100 - ((Number($('tr#'+ option3 + '>td:nth-child(3)').html()) - Number($('tr#'+ option3 + '>td:nth-child(6)').html())) + Number($('tr#'+ option3 + '>td:nth-child(5)').html()) + Number($('tr#'+ option3 + '>td:nth-child(8)').html()) + Number($('tr#'+ option3 + '>td:nth-child(11)').html())))) * (fodder3 * 0.01)) +
+                    + + ((0.98 * (100 - ((Number($('tr#'+ option4 + '>td:nth-child(3)').html()) - Number($('tr#'+ option4 + '>td:nth-child(6)').html())) + Number($('tr#'+ option4 + '>td:nth-child(5)').html()) + Number($('tr#'+ option4 + '>td:nth-child(8)').html()) + Number($('tr#'+ option4 + '>td:nth-child(11)').html())))) * (fodder4 * 0.01)) +
+                    + + ((0.98 * (100 - ((Number($('tr#'+ option5 + '>td:nth-child(3)').html()) - Number($('tr#'+ option5 + '>td:nth-child(6)').html())) + Number($('tr#'+ option5 + '>td:nth-child(5)').html()) + Number($('tr#'+ option5 + '>td:nth-child(8)').html()) + Number($('tr#'+ option5 + '>td:nth-child(11)').html())))) * (fodder5 * 0.01));
+                 if (isNaN(reslut1)) return Number(0);
+                 else return reslut1.toFixed(2);
+            }
+            function cal_tdcpf() {
+                 reslut2 =  ((Number($('tr#'+ option1 + '>td:nth-child(5)').html()) * 2.71828 ^ (-1.2 * (Number($('tr#'+ option1 + '>td:nth-child(7)').html()) / Number($('tr#'+ option1 + '>td:nth-child(5)').html())))) * (fodder1 * 0.01)) +
+                        + + ((Number($('tr#'+ option2 + '>td:nth-child(5)').html()) * 2.71828 ^ (-1.2 * (Number($('tr#'+ option2 + '>td:nth-child(7)').html()) / Number($('tr#'+ option2 + '>td:nth-child(5)').html())))) * (fodder2 * 0.01)) +
+                        + + ((Number($('tr#'+ option3 + '>td:nth-child(5)').html()) * 2.71828 ^ (-1.2 * (Number($('tr#'+ option3 + '>td:nth-child(7)').html()) / Number($('tr#'+ option3 + '>td:nth-child(5)').html())))) * (fodder3 * 0.01)) +
+                        + + ((Number($('tr#'+ option4 + '>td:nth-child(5)').html()) * 2.71828 ^ (-1.2 * (Number($('tr#'+ option4 + '>td:nth-child(7)').html()) / Number($('tr#'+ option4 + '>td:nth-child(5)').html())))) * (fodder4 * 0.01)) +
+                        + + ((Number($('tr#'+ option5 + '>td:nth-child(5)').html()) * 2.71828 ^ (-1.2 * (Number($('tr#'+ option5 + '>td:nth-child(7)').html()) / Number($('tr#'+ option5 + '>td:nth-child(5)').html())))) * (fodder5 * 0.01));
+                 if (isNaN(reslut2)) return Number(0);
+                 else return reslut2.toFixed(2);
+            }
+            function cal_tdcpc() {
+                 reslut3 = (((1 - (0.4 * (Number($('tr#'+ option1 + '>td:nth-child(7)').html()) / Number($('tr#'+ option1 + '>td:nth-child(5)').html())))) * Number($('tr#'+ option1 + '>td:nth-child(5)').html())) * (fodder1 * 0.01)) +
+                        + + (((1 - (0.4 * (Number($('tr#'+ option2 + '>td:nth-child(7)').html()) / Number($('tr#'+ option2 + '>td:nth-child(5)').html())))) * Number($('tr#'+ option2 + '>td:nth-child(5)').html())) * (fodder2 * 0.01)) +
+                        + + (((1 - (0.4 * (Number($('tr#'+ option3 + '>td:nth-child(7)').html()) / Number($('tr#'+ option3 + '>td:nth-child(5)').html())))) * Number($('tr#'+ option3 + '>td:nth-child(5)').html())) * (fodder3 * 0.01)) +
+                        + + (((1 - (0.4 * (Number($('tr#'+ option4 + '>td:nth-child(7)').html()) / Number($('tr#'+ option4 + '>td:nth-child(5)').html())))) * Number($('tr#'+ option4 + '>td:nth-child(5)').html())) * (fodder4 * 0.01)) +
+                        + + (((1 - (0.4 * (Number($('tr#'+ option5 + '>td:nth-child(7)').html()) / Number($('tr#'+ option5 + '>td:nth-child(5)').html())))) * Number($('tr#'+ option5 + '>td:nth-child(5)').html())) * (fodder5 * 0.01));
+                 if (isNaN(reslut3)) return Number(0);
+                 else return reslut3.toFixed(2);
+            }
+            function cal_tdfa() {
+                 reslut4 = ((Number($('tr#'+ option1 + '>td:nth-child(8)').html()) - 1) * (fodder1 * 0.01)) +
+                       + + ((Number($('tr#'+ option2 + '>td:nth-child(8)').html()) - 1) * (fodder2 * 0.01)) +
+                       + + ((Number($('tr#'+ option3 + '>td:nth-child(8)').html()) - 1) * (fodder3 * 0.01)) +
+                       + + ((Number($('tr#'+ option4 + '>td:nth-child(8)').html()) - 1) * (fodder4 * 0.01)) +
+                       + + ((Number($('tr#'+ option5 + '>td:nth-child(8)').html()) - 1) * (fodder5 * 0.01));
+                 if (isNaN(reslut4)) return Number(0);
+                 else return reslut4.toFixed(2);
+            }
+
+            function cal_tdndf() {
+                 reslut5 = ((0.75 * (Number($('tr#'+ option1 + '>td:nth-child(3)').html()) - Number($('tr#'+ option1 + '>td:nth-child(6)').html()) - Number($('tr#'+ option1 + '>td:nth-child(12)').html())) * (1 - (Number($('tr#'+ option1 + '>td:nth-child(12)').html()) / (Number($('tr#'+ option1 + '>td:nth-child(3)').html()) - Number($('tr#'+ option1 + '>td:nth-child(6)').html()))^0.667))) * (fodder1 * 0.01)) +
+                        + + ((0.75 * (Number($('tr#'+ option2 + '>td:nth-child(3)').html()) - Number($('tr#'+ option2 + '>td:nth-child(6)').html()) - Number($('tr#'+ option2 + '>td:nth-child(12)').html())) * (1 - (Number($('tr#'+ option2 + '>td:nth-child(12)').html()) / (Number($('tr#'+ option2 + '>td:nth-child(3)').html()) - Number($('tr#'+ option2 + '>td:nth-child(6)').html()))^0.667))) * (fodder2 * 0.01)) +
+                        + + ((0.75 * (Number($('tr#'+ option3 + '>td:nth-child(3)').html()) - Number($('tr#'+ option3 + '>td:nth-child(6)').html()) - Number($('tr#'+ option3 + '>td:nth-child(12)').html())) * (1 - (Number($('tr#'+ option3 + '>td:nth-child(12)').html()) / (Number($('tr#'+ option3 + '>td:nth-child(3)').html()) - Number($('tr#'+ option3 + '>td:nth-child(6)').html()))^0.667))) * (fodder3 * 0.01)) +
+                        + + ((0.75 * (Number($('tr#'+ option4 + '>td:nth-child(3)').html()) - Number($('tr#'+ option4 + '>td:nth-child(6)').html()) - Number($('tr#'+ option4 + '>td:nth-child(12)').html())) * (1 - (Number($('tr#'+ option4 + '>td:nth-child(12)').html()) / (Number($('tr#'+ option4 + '>td:nth-child(3)').html()) - Number($('tr#'+ option4 + '>td:nth-child(6)').html()))^0.667))) * (fodder4 * 0.01)) +
+                        + + ((0.75 * (Number($('tr#'+ option5 + '>td:nth-child(3)').html()) - Number($('tr#'+ option5 + '>td:nth-child(6)').html()) - Number($('tr#'+ option5 + '>td:nth-child(12)').html())) * (1 - (Number($('tr#'+ option5 + '>td:nth-child(12)').html()) / (Number($('tr#'+ option5 + '>td:nth-child(3)').html()) - Number($('tr#'+ option5 + '>td:nth-child(6)').html()))^0.667))) * (fodder5 * 0.01));
+                 if (isNaN(reslut5)) return Number(0);
+                 else return reslut5.toFixed(2);
+            }
+
+            $('.tdnfc').val(cal_tdnfc())
+            $('.tdcpf').val(cal_tdcpf())
+            $('.tdcpc').val(cal_tdcpc())
+            $('.tdfa').val(cal_tdfa())
+            $('.tdndf').val(cal_tdndf())
+            $('.tdn').val(function () {
+                var reslut6 =  reslut1 + reslut2 + reslut3 + (reslut4 * 2.25) + reslut5 - 7;
+                return reslut6.toFixed(2);
+            })
+            $('.de1x').val(function () {
+                var reslut7 = (reslut1 / 100) * 4.2 + (reslut5 / 100) * 4.2 + ((reslut2 + reslut3) / 100) * 5.6 + (reslut4 / 100) * 9.4 - 0.3;
+                return reslut7.toFixed(2);
+            })
+            $('.mep').val(function () {
+                var reslut8 = (1.01 * ((reslut1 / 100) * 4.2 + (reslut5 / 100) * 4.2 + ((reslut2 + reslut3) / 100) * 5.6 + (reslut4 / 100) * 9.4 - 0.3) - 0.45) + 0.0046 * (Number($('tr#'+ option1 + '>td:nth-child(8)').html()) - 3);
+                return reslut8.toFixed(2);
+            })
+            $('.nelp').val(function () {
+                var reslut9 = 0.703 * ((1.01 * ((reslut1 / 100) * 4.2 + (reslut5 / 100) * 4.2 + ((reslut2 + reslut3) / 100) * 5.6 + (reslut4 / 100) * 9.4 - 0.3) - 0.45) + 0.0046 * (Number($('tr#'+ option1 + '>td:nth-child(8)').html()) - 3)) - 0.19 + (((0.097 * ((1.01 * ((reslut1 / 100) * 4.2 + (reslut5 / 100) * 4.2 + ((reslut2 + reslut3) / 100) * 5.6 + (reslut4 / 100) * 9.4 - 0.3) - 0.45) + 0.0046 * (Number($('tr#'+ option1 + '>td:nth-child(8)').html()) - 3)) + 0.19) / 97) * (Number($('tr#'+ option1 + '>td:nth-child(8)').html()) - 3));
+                return reslut9.toFixed(2)
+            })
+        })
+    })
+    function print_data(data){
+        $.each(data, function(key,val){
+            console.log(val.表头1);
+            $.each(val, function(k,v){
+                console.log(k + "  ->  " + v);
+            });
+        });
+        var output = JSON.stringify(data, 2, 2);
+    }
+</script>
+
+{% endblock %}

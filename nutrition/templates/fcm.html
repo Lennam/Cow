@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}FCM计算{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/fcm.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">FCM计算公式</h3>
+	</div>
+	<div class="panel-body">
+		4%FCM = (0.4 x 产奶量(kg)) + (15 x 乳脂量(kg))
+	</div>
+</div>
+<form class="calBtn" role="form">
+    <div class="input-group">
+        <span class="input-group-addon">产奶量(kg): </span>
+        <input type="number" class="form-control milk" placeholder="请输入产奶量">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">乳脂量(kg): </span>
+        <input type="number" class="form-control cream" placeholder="请输入乳脂量">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">FCM结果: </span>
+        <input type="text" class="form-control result" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg calFcm" value="计算">
+</form>
+<script>
+    $(document).ready(function () {
+        $(".calFcm").click(function () {
+            $(".result").val(function () {
+                return $(".milk").val() * 0.4 + $(".cream").val() * 15;
+            })
+        })
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}净能估计{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/dmi.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">MEp、NElp、NEm、NEg的计算公式</h3>
+	</div>
+	<div class="panel-body">
+		代谢能MEp：MEp(Mcal / kg) = (1.01 x (DEp) - 0.45) + 0.0046 x (EE - 3) (注：对于EE含量低于3%的饲料，使用MEp(Mcal / kg) = 1.01 x DE - 0.45计算 )<br>
+        EE含量低于3%的饲料的泌乳净能：NElp(Mcal / kg) = (0.703 x MEp) - 0.19<br>
+        EE含量高于3%的饲料的泌乳净能：NElp(Mcal / kg) = (0.703 x MEp) - 0.19 + (((0.097 x MEp + 0.19) / 97) x (EE - 3))<br>
+        脂肪添加物的泌乳净能：NElp(Mcal / kg) = 0.8 x MEp<br>
+        维持净能：NEm = 1.37 x ME - 0.138 x ME^2 + 0.0105 x ME^3 - 1.12<br>
+        增重净能：NEg = 1.42 x ME - 0.174 x ME^2 + 0.0122 x ME^3 - 1.65<br>
+	</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">代谢能MEp计算</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">DEp: </span>
+        <input type="number" class="form-control mep_DEp" placeholder="请输入DEp">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control mep_EE" placeholder="请输入EE">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">代谢能MEp结果: </span>
+        <input type="text" class="form-control mep" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_mep" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">泌乳净能NElp计算</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">MEp: </span>
+        <input type="number" class="form-control nelp_MEp" placeholder="请输入MEp">
+    </div>
+	<br>
+		<div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control nelp_EE" placeholder="请输入EE">
+    </div>
+		<br>
+    <div class="input-group">
+        <span class="input-group-addon">泌乳净能NElp结果: </span>
+        <input type="text" class="form-control nelp" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_nelp" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">维持净能NEm计算</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">DE1x: </span>
+        <input type="number" class="form-control nem_DE1x" placeholder="请输入DE1x">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">维持净能NEm结果: </span>
+        <input type="text" class="form-control nem" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_nem" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">增重净能NEg计算</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">DE1x: </span>
+        <input type="number" class="form-control neg_DE1x" placeholder="请输入DE1x">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">增重净能NEg结果: </span>
+        <input type="text" class="form-control neg" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_neg" value="计算">
+</form>
+</div>
+<script>
+$(document).ready(function () {
+	$(".cal_mep").click(function () {
+	    if ($(".mep_EE").val() > 3) {
+            $(".mep").val(function () {
+                return (1.01 * $(".mep_DEp").val() - 0.45) + 0.0046 * ($(".mep_EE").val() - 3);
+            })
+        } else {
+	        $(".mep").val(function () {
+                return 1.01 * $(".mep_DEp").val() - 0.45;
+            })
+        }
+    })
+    $(".cal_nelp").click(function () {
+	    if ($(".nelp_EE").val() > 3) {
+            $(".nelp").val(function () {
+                return 0.703 * $(".nelp_MEp").val() - 0.19 + (((0.097 * $(".nelp_MEp").val() + 0.19) / 97) * ($(".nelp_EE").val() - 3));
+            })
+        } else {
+	        $(".nelp").val(function () {
+                return 0.703 * $(".nelp_MEp").val() - 0.19;
+            })
+        }
+    })
+    $(".cal_nem").click(function () {
+            $(".nem").val(function () {
+                return 1.37 * ($(".nem_DE1x").val() * 0.82) - 0.138 * (($(".nem_DE1x").val())^2) + 0.0105 * (($(".nem_DE1x").val())^3) - 1.12;
+            })
+    })
+    $(".cal_neg").click(function () {
+            $(".neg").val(function () {
+                return 1.42 * ($(".nem_DE1x").val() * 0.82) - 0.174 * (($(".nem_DE1x").val())^2) + 0.0122 * (($(".nem_DE1x").val())^3) - 1.65;
+            })
+    })
+})
+</script>
+{% endblock %}

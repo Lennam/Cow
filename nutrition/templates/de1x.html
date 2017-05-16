@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}饲料消化能估测{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/fcm.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">DE1x计算公式</h3>
+	</div>
+	<div class="panel-body">
+		大多数饲料：DE1x(Mcal / kg) = (tdNFC / 100) x 4.2 + (tNDF / 100) x 4.2 + (tdCP / 100) x 5.6 + (FA / 100) x 9.4 -0.3<br>
+        动物性蛋白质饲料：DE1x(Mcal / kg) = (tdNFC / 100) x 4.2 + (tdCP / 100) x 5.6 + (FA / 100) x 9.4 -0.3<br>
+        含甘油的添加脂肪：DE1x(Mcal / kg) = 9.4 x (FAdigest x 0.9 x (EE / 100) + (4.3 x 0.1 x (EE / 100))<br>
+        不含甘油的添加脂肪：DE1x(Mcal / kg) = 9.4 x FAdigest x (EE / 100)<br>
+	</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">大多数饲料的DE1x计算：</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">tdNFC: </span>
+        <input type="number" class="form-control tdNFC" placeholder="请输入tdNFC">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">tdNDF: </span>
+        <input type="number" class="form-control tdNDF" placeholder="请输入tdNDF">
+    </div>
+	<br>
+	<div class="input-group">
+        <span class="input-group-addon">tdCP: </span>
+        <input type="number" class="form-control tdCP" placeholder="请输入tdCP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">FA: </span>
+        <input type="number" class="form-control FA" placeholder="请输入FA">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">大多数饲料的DE1x结果: </span>
+        <input type="text" class="form-control de1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_de1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">大多数饲料的DE1x计算：</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">tdNFC: </span>
+        <input type="number" class="form-control pro_tdNFC" placeholder="请输入tdNFC">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">tdCP: </span>
+        <input type="number" class="form-control pro_tdCP" placeholder="请输入tdCP">
+    </div>
+	<br>
+	<div class="input-group">
+        <span class="input-group-addon">FA: </span>
+        <input type="number" class="form-control pro_FA" placeholder="请输入FA">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">大多数饲料的DE1x结果: </span>
+        <input type="text" class="form-control pro_de1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_pro_de1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">含甘油的添加脂肪的DE1x计算：</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">FAdigest: </span>
+        <input type="number" class="form-control gly_FAdigest" placeholder="请输入FAdigest">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control gly_EE" placeholder="请输入EE">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">含甘油的添加脂肪的DE1x结果: </span>
+        <input type="text" class="form-control gly_de1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_gly_de1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">含甘油的添加脂肪的DE1x计算：</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">FAdigest: </span>
+        <input type="number" class="form-control fat_FAdigest" placeholder="请输入FAdigest">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control fat_EE" placeholder="请输入EE">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">含甘油的添加脂肪的DE1x结果: </span>
+        <input type="text" class="form-control fat_de1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_fat_de1x" value="计算">
+</form>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".cal_de1x").click(function () {
+            $(".de1x").val(function () {
+                return ($(".tdNFC").val() / 100) * 4.2 + ($(".tdNDF").val() / 100) * 4.2 + ($(".tdCP").val() / 100) * 5.6 + ($(".FA").val() / 100) * 9.4 -0.3;
+            })
+        })
+        $(".cal_pro_de1x").click(function () {
+            $(".pro_de1x").val(function () {
+                return ($(".pro_tdNFC").val() / 100) * 4.2 + ($(".pro_CP").val() / 100) * 5.6+ ($(".pro_FA").val() / 100) * 9.4 -0.3;
+            })
+        })
+        $(".cal_pro_de1x").click(function () {
+            $(".pro_de1x").val(function () {
+                return ($(".pro_tdNFC").val() / 100) * 4.2 + ($(".pro_CP").val() / 100) * 5.6+ ($(".pro_FA").val() / 100) * 9.4 -0.3;
+            })
+        })
+        $(".cal_gly_de1x").click(function () {
+            $(".gly_de1x").val(function () {
+                return 9.4 * ($(".gly_FAdigest").val() * 0.9 * ($(".gly_EE").val() / 100)+ (4.3 * 0.1 *($(".gly_EE").val() / 100)));
+            })
+        })
+        $(".cal_fat_de1x").click(function () {
+            $(".fat_de1x").val(function () {
+                return 9.4 * $(".fat_FAdigest").val() * ($(".fat_EE").val() / 100);
+            })
+        })
+    })
+</script>
+{% endblock %}

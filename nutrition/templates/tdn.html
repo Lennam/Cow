@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}TDN计算{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static  'css/tdn.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">TDN计算公式</h3>
+	</div>
+	<div class="panel-body">
+		对于大多数饲料原料的TDN1x：TDN1x(%) = tdNFC + tdCP + (tdFA x 2.25) + tdNDF - 7<br>
+        动物性蛋白饲料的TDN1x：TDN1x(%) = CPdigest x CP + FA x 2.25 + 0.98 x (100 - CP - Ash - EE) - 7<br>
+        含甘油的脂肪的TDN1x：TDN1x(%) = (EE x 0.1) + (FAdigest x (EE x 0.9) x 2.25)<br>
+        不含甘油的脂肪的TDN1x：TDN1x(%) = EE x FAdigest x 2.25<br>
+	</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">对于大多数饲料原料的TDN1x计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">tdNFC: </span>
+        <input type="number" class="form-control tdNFC" placeholder="请输入tdNFC">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">tdCP: </span>
+        <input type="number" class="form-control tdCP" placeholder="请输入tdCP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">tdFA: </span>
+        <input type="number" class="form-control tdFA" placeholder="请输入tdFA">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">tdNDF: </span>
+        <input type="number" class="form-control tdNDF" placeholder="请输入tdNDF">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">对于大多数饲料原料的TDN1x结果: </span>
+        <input type="text" class="form-control TDN1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_TDN1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">动物性蛋白饲料的TDN1x计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">CPdigest: </span>
+        <input type="number" class="form-control pro_CPdigest" placeholder="请输入CPdigest">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">CP: </span>
+        <input type="number" class="form-control pro_CP" placeholder="请输入CP">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">Ash: </span>
+        <input type="number" class="form-control pro_Ash" placeholder="请输入Ash">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control pro_EE" placeholder="请输入EE">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">动物性蛋白饲料的TDN1x结果: </span>
+        <input type="text" class="form-control pro_TDN1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_pro_TDN1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">含甘油的脂肪的TDN1x计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control gly_EE" placeholder="请输入EE">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">FAdigest: </span>
+        <input type="number" class="form-control gly_FAdigest" placeholder="请输入FAdigest">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">含甘油的脂肪的TDN1x结果: </span>
+        <input type="text" class="form-control gly_TDN1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_gly_TDN1x" value="计算">
+</form>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">不含甘油的脂肪的TDN1x计算:</h3>
+	</div>
+	<form class="calBtn" role="form" style="padding: 10px;">
+    <div class="input-group">
+        <span class="input-group-addon">EE: </span>
+        <input type="number" class="form-control fat_EE" placeholder="请输入EE">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-addon">FAdigest: </span>
+        <input type="number" class="form-control fat_FAdigest" placeholder="请输入FAdigest">
+    </div>
+	<br>
+    <div class="input-group">
+        <span class="input-group-addon">不含甘油的脂肪的TDN1x结果: </span>
+        <input type="text" class="form-control fat_TDN1x" placeholder="结果">
+    </div>
+    <br>
+    <input type="button" class="btn-lg cal_fat_TDN1x" value="计算">
+</form>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".cal_TDN1x").click(function () {
+            $(".TDN1x").val(function () {
+                return $(".tdNFC").val() + $(".tdCP").val() + ($(".tdFA").val() * 2.25) + $(".tdNDF").val() - 7;
+            })
+        })
+        $(".cal_pro_TDN1x").click(function () {
+            $(".pro_TDN1x").val(function () {
+                return $(".pro_CPdigest").val() * $(".pro_CP").val() + ($(".pro_EE").val() - 1) * 2.25 + 0.98 * (100 - $(".pro_CP").val() - $(".pro_Ash").val() - $(".pro_EE").val()) - 7;
+            })
+        })
+        $(".cal_gly_TDN1x").click(function () {
+            $(".gly_TDN1x").val(function () {
+                return ($(".gly_EE").val() * 0.1) + ($(".gly_FAdigest").val() * ($(".gly_EE").val() * 0.9) * 2.25) ;
+            })
+        })
+        $(".cal_fat_TDN1x").click(function () {
+            $(".fat_TDN1x").val(function () {
+                return $(".fat_EE").val() * $(".fat_FAdigest").val() * 2.25;
+            })
+        })
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load  staticfiles  %}
+
+{% block title %}欢迎光临首页{% endblock %}
+
+{% block links %}<link rel="stylesheet" href="{% static  'css/home.css'  %}">{% endblock %}
+
+{% block content %}
+        <div class="jumbotron">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488969871&di=e7b786d32c1cfd84862ec4e5d0a03d6d&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.comm-pro.net%2Fmanage%2Fediter%2FUploadFile%2F201378142645639.jpg" class="img-responsive">
+            <h2 class="welcome">欢迎使用奶牛营养需要(干物质采食量与能量)系统</h2>
+        </div>
+{% endblock %}
