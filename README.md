@@ -4,5 +4,3 @@
 
 框架： Django 1.8<br>
 Python版本： 2.7<br>
-
-<a href="http://119.23.70.18" target="_blank">在线浏览</a>
